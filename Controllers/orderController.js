@@ -1,12 +1,14 @@
 
 const Order = require("../Schemas/orderSchema")
 var ObjectId= require("mongodb").ObjectId;
+const connection =require("../dbConnection");
 
 
 module.exports = {
     getOrder: async(req,res)=>{
         try{
-           const getresult= await Order.find()
+            let getresult=  connection(); 
+            getresult= await Order.find()
            res.send(getresult)
         }catch(e){console.log(e);}
     },

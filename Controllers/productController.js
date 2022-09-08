@@ -1,12 +1,14 @@
 const Product = require("../Schemas/productSchema")
 
 var ObjectId= require("mongodb").ObjectId;
+const connection =require("../dbConnection");
 
 
 module.exports = {
     getProduct: async(req,res)=>{
         try{
-           const getresult= await Product.find()
+            let getresult=  connection(); 
+            getresult= await Product.find()
            res.send(getresult)
         }catch(e){console.log(e);}
     },

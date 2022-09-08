@@ -3,13 +3,13 @@ const Customer = require("../Schemas/customerSchema")
 
 var ObjectId= require("mongodb").ObjectId;
 
-// require("./dbConnection");
+const connection =require("../dbConnection");
 
 module.exports = {
     getCustomer: async(req,res)=>{
         try{
-        //    const getresult=  
-            const getresult= await Customer.find()
+           let getresult=  connection(); 
+              getresult= await Customer.find()
             console.log(getresult);
            res.send(getresult)
         }catch(e){console.log(e);}
